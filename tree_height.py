@@ -1,5 +1,5 @@
 # python3
-# #221RDB188 Deniss Buslajevs 8. grupa
+# #221RDB188 Deniss Buslajevs 8. grupa 
 
 import sys
 import threading
