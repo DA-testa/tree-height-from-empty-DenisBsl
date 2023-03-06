@@ -8,13 +8,26 @@ import numpy
 def compute_height(n, parents):
     # Write this function
     max_height = 0
-    # Your code here
+    print(n)
     return max_height
 
 
 def main():
-    # implement input form keyboard and from files
+    data = input()
+    match data[0]:
+        case "F":
+            data = input()
+            with open(data) as f:
+                n = f.readline()
+                parents = map(int, f.readline().split(" "))
+        case "I":
+            n = input()
+            parents = map(int, input().split(" "))
+        case _:
+            return
     
+    compute_height(n, parents)
+
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
     
