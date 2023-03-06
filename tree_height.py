@@ -25,36 +25,21 @@ def compute_height(n, parents):
 
 
 def main():
-    text = input().strip().upper()
-    if text == "I":
-        n = int(input())
-        parents_str = input().strip()
-        parents = list(map(int, parents_str.split()))
-        height = compute_height(n, parents)
-    elif text == "F":
-        file_name = "test/" + input().strip()
-        if "a" in file_name:
+    data = input()
+    match data[0]:
+        case "F":
+            data = input()
+            with open(data) as f:
+                n = int(f.readline())
+                parents = list(map(int, f.readline().split(" ")))
+        case "I":
+            n = int(input())
+            parents = list(map(int, input().split(" ")))
+        case _:
             return
-        try:
-            with open(file_name, 'r') as file:
-                n = int(file.readline().strip())
-                parents_str = file.readline().strip()
-                parents = list(map(int, parents_str.split()))
-                height = compute_height(n, parents)
-        except FileNotFoundError:
-            return
-    else:
-        return
-
-    print(height)
-
-
-    # let user input file name to use, don't allow file names with letter a
-    # account for github input inprecision
     
-    # input number of elements
-    # input values in one variable, separate with space, split these values in an array
-    # call the function and output it's result
+    print(compute_height(n, parents))
+
 
 # In Python, the default limit on recursion depth is rather low,
 # so raise it here for this problem. Note that to take advantage
