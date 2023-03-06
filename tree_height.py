@@ -1,14 +1,22 @@
 # python3
+# #221RDB188 Deniss Buslajevs 8. grupa
 
 import sys
 import threading
-import numpy
 
+def mx_height(node, max_height, parents):
+    for i in range(len(parents)):
+        if parents[i] == node:
+            max_height = mx_height(i, max_height+1, parents)
+    return max_height
 
 def compute_height(n, parents):
-    # Write this function
-    max_height = 0
-    print(n)
+    rootnode = 0
+    for i in range(n):
+        if parents[i] == -1:
+            rootnode = i
+
+    max_height = mx_height(rootnode, 1, parents)
     return max_height
 
 
@@ -18,15 +26,15 @@ def main():
         case "F":
             data = input()
             with open(data) as f:
-                n = f.readline()
-                parents = map(int, f.readline().split(" "))
+                n = int(f.readline())
+                parents = list(map(int, f.readline().split(" ")))
         case "I":
-            n = input()
-            parents = map(int, input().split(" "))
+            n = int(input())
+            parents = list(map(int, input().split(" ")))
         case _:
             return
     
-    compute_height(n, parents)
+    print(compute_height(n, parents))
 
     # let user input file name to use, don't allow file names with letter a
     # account for github input inprecision
