@@ -7,7 +7,7 @@ import threading
 def mx_height(node, max_height, parents):
     for i in range(len(parents)):
         if parents[i] == node:
-            max_height = mx_height(i, max_height+1, parents)
+            max_height = max(mx_height(i, max_height+1, parents), max_height)
     return max_height
 
 def compute_height(n, parents):
